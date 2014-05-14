@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<title>EmployeeReport</title>
+		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+		<meta content="Visual Basic .NET 7.1" name="CODE_LANGUAGE">
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<LINK href="css\main.css" type="text/css" rel="stylesheet">
+	</HEAD>
+	<body MS_POSITIONING="GridLayout">
+		<form name="Form1" method="post" action="EmployeeReport.aspx" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxOTg5NTk0NDYxO3Q8cDxsPGNvbDE7Y29sNjtjb2w3O2NvbDQ7Y29sNTtjb2w4O2NvbDk7Y29sMTA7Y29sMjtjb2wzO2NvbDA7PjtsPDE7MDswOzA7MDswOzA7MDsxOzE7MDs+PjtsPGk8MT47PjtsPHQ8O2w8aTwxMj47aTwyND47aTwyNj47PjtsPHQ8cDw7cDxsPG9uQ2xpY2s7PjtsPHJldHVybiBSZXNldFNjcmVlbigpXDs7Pj4+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzx0Pjs+Pjs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzx0Pjs+Pjs+Ozs+Oz4+Oz4+Oz7Z6Zq9cM2tGJzxcc1eW8pdtIiR4A==" />
+
+			<table cellspacing="0" cellpadding="0" bordercolor="blue" align="left">
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+			<table id="Heading" cellSpacing="0" cellPadding="0" width="50%" align="center" border="0">
+				<tr class="tblHeader">
+					<td rowspan="3">
+						<a id="Hyperlink1" href="Main.aspx"><img src="Images/home.gif" alt="" border="0" /></a></td>
+					</TD>
+					<td align="center" colSpan="4">
+						<h4>View Roster Details</h4>
+					</td>
+				</tr>
+				<tr class="tblData1">
+					<td><font color="red">*</font>Employee Id</td>
+					<td><input name="txtEmpId" type="text" value="6247543" maxlength="10" id="txtEmpId" /></td>
+					<td><font color="red">*</font>People Soft Id</td>
+					<td><input name="txtPeopleSoft_Id" type="text" value="6247543" id="txtPeopleSoft_Id" /></td>
+				</tr>
+				<tr class="tblFooter">
+					<td class="" align="center" colSpan="4">
+						<input type="submit" name="cmdShow" value="Show" onclick="if (typeof(Page_ClientValidate) == 'function') Page_ClientValidate(); " language="javascript" id="cmdShow" />
+						&nbsp;<input type="submit" name="cmdReset" value="Reset" id="cmdReset" onClick="return ResetScreen();" />
+					</td>
+				</tr>
+				<tr class="tblDataFilter">
+					<td class="" align="left" colSpan="5">
+						<span id="Label1"><b><font color="Red">Note:-</font></b></span>
+					</td>
+				</tr>
+				<tr class="tblDataFilter1">
+					<td class="" align="left" colSpan="5">
+						<span id="lblNote1"><b>1. For Contractor's: Use your Contractor Id as PeopleSoft Id </b></span>
+					</td>
+				</tr>
+				<tr class="tblDataFilter1">
+					<td class="" align="left" colSpan="5">
+						<span id="lblNote2"><b>2. For New Joinee's: Use your NJ Id as Employee Id and PeopleSoft Id</b></span>
+					</td>
+				</tr>
+				<tr class="tblDataFilter1">
+					<td class="" align="left" colSpan="5">
+						<span id="lblNote3"><b>
+							<font color="red" size="2">3. Employees who take departure on Monday between 00:00 
+								am - 08:00 am need to check last week Monday drop route no</font></b></span></td>
+				</tr>
+			</table>
+			<br>
+			<center>
+				</center>
+			<table id="MainTab" cellpadding="0" align="Center" bordercolor="Black" border="0" width="90%">
+	<tr class="tblHeader">
+		<td colspan="13">
+						<h4>Weekly Transport Roster
+						</h4>
+					</td>
+	</tr><tr class="tblDataFilter">
+		<td align="Center" colspan="13">
+						<b>Employee Pick Up Details</b>
+					</td>
+	</tr><tr class="tblFooter">
+		<td align="Center">Week Start Date</td><td align="Center">Route No</td><td align="Center">Seq</td><td align="Center">Order</td><td align="Center">Emp Id</td><td align="Center">Name</td><td align="Center">Days</td><td align="Center">Zone</td><td align="Center">Area</td><td align="Center">Shift</td><td align="Center">Pickup time</td><td align="Center">CabMates</td>
+	</tr><tr class="tbldata">
+		<td align="Left">12/05/2014</td><td align="Right">448</td><td align="Right">4</td><td align="Left">Pick</td><td align="Left">6247543P</td><td align="Left">Madhur Ahuja</td><td align="Left">Mon</td><td align="Left">Delhi</td><td align="Left">Pitampura</td><td align="Left">09:15</td><td align="Left">07:25</td><td align="Center"><a href="MyCabMates.aspx?RN=448&amp;Order=Pick&amp;ShiftTime=09:15&amp;UploadID=4331" target="_blank"><b><font color="Red">Show</font></b></a></td>
+	</tr><tr class="tblFooter">
+		<td align="Center">Week Start Date</td><td align="Center">Route No</td><td align="Center">Seq</td><td align="Center">Order</td><td align="Center">Emp Id</td><td align="Center">Name</td><td align="Center">Days</td><td align="Center">Zone</td><td align="Center">Area</td><td align="Center">Shift</td><td align="Center">Pickup time</td><td align="Center">CabMates</td>
+	</tr><tr class="tbldata1">
+		<td align="Left">13/05/2014</td><td align="Right">448</td><td align="Right">5</td><td align="Left">Pick</td><td align="Left">6247543P</td><td align="Left">Madhur Ahuja</td><td align="Left">Tue</td><td align="Left">Delhi</td><td align="Left">Pitampura</td><td align="Left">09:15</td><td align="Left">07:25</td><td align="Center"><a href="MyCabMates.aspx?RN=448&amp;Order=Pick&amp;ShiftTime=09:15&amp;UploadID=4333" target="_blank"><b><font color="Red">Show</font></b></a></td>
+	</tr><tr class="tblFooter">
+		<td align="Center">Week Start Date</td><td align="Center">Route No</td><td align="Center">Seq</td><td align="Center">Order</td><td align="Center">Emp Id</td><td align="Center">Name</td><td align="Center">Days</td><td align="Center">Zone</td><td align="Center">Area</td><td align="Center">Shift</td><td align="Center">Pickup time</td><td align="Center">CabMates</td>
+	</tr><tr class="tbldata">
+		<td align="Left">14/05/2014</td><td align="Right">448</td><td align="Right">5</td><td align="Left">Pick</td><td align="Left">6247543P</td><td align="Left">Madhur Ahuja</td><td align="Left">Wed</td><td align="Left">Delhi</td><td align="Left">Pitampura</td><td align="Left">09:15</td><td align="Left">07:25</td><td align="Center"><a href="MyCabMates.aspx?RN=448&amp;Order=Pick&amp;ShiftTime=09:15&amp;UploadID=4335" target="_blank"><b><font color="Red">Show</font></b></a></td>
+	</tr>
+</table>
+			<br>
+			<table id="MainTab2ndOrder" cellpadding="1" align="Center" border="0" width="90%">
+	<tr class="tblDataFilter">
+		<td align="Center" colspan="13">
+						<b>Employee Drop Details</b>
+					</td>
+	</tr><tr class="tblFooter">
+		<td align="Center">Week Start Date</td><td align="Center">Parking Slot</td><td align="Center">Route No</td><td align="Center">Seq</td><td align="Center">Order</td><td align="Center">Emp Id</td><td align="Center">Name</td><td align="Center">Days</td><td align="Center">Zone</td><td align="Center">Area</td><td align="Center">Shift</td><td align="Center">CabMates</td>
+	</tr><tr class="tbldata">
+		<td align="Left">12/05/2014</td><td align="Right">102</td><td align="Right">1117</td><td align="Right">1</td><td align="Left">Drop</td><td align="Left">6247543D</td><td align="Left">Madhur Ahuja</td><td align="Left">Mon</td><td align="Left">Delhi</td><td align="Left">Pitampura</td><td align="Left">17:00</td><td align="Center"><a href="MyCabMates.aspx?RN=1117&amp;Order=Drop&amp;ShiftTime=17:00&amp;UploadID=4331" target="_blank"><b><font color="Red">Show</font></b></a></td>
+	</tr><tr class="tblFooter">
+		<td align="Center">Week Start Date</td><td align="Center">Parking Slot</td><td align="Center">Route No</td><td align="Center">Seq</td><td align="Center">Order</td><td align="Center">Emp Id</td><td align="Center">Name</td><td align="Center">Days</td><td align="Center">Zone</td><td align="Center">Area</td><td align="Center">Shift</td><td align="Center">CabMates</td>
+	</tr><tr class="tbldata1">
+		<td align="Left">13/05/2014</td><td align="Right">17</td><td align="Right">1117</td><td align="Right">1</td><td align="Left">Drop</td><td align="Left">6247543D</td><td align="Left">Madhur Ahuja</td><td align="Left">Tue</td><td align="Left">Delhi</td><td align="Left">Pitampura</td><td align="Left">17:00</td><td align="Center"><a href="MyCabMates.aspx?RN=1117&amp;Order=Drop&amp;ShiftTime=17:00&amp;UploadID=4333" target="_blank"><b><font color="Red">Show</font></b></a></td>
+	</tr><tr class="tblFooter">
+		<td align="Center">Week Start Date</td><td align="Center">Parking Slot</td><td align="Center">Route No</td><td align="Center">Seq</td><td align="Center">Order</td><td align="Center">Emp Id</td><td align="Center">Name</td><td align="Center">Days</td><td align="Center">Zone</td><td align="Center">Area</td><td align="Center">Shift</td><td align="Center">CabMates</td>
+	</tr><tr class="tbldata">
+		<td align="Left">14/05/2014</td><td align="Right">102</td><td align="Right">1117</td><td align="Right">1</td><td align="Left">Drop</td><td align="Left">6247543D</td><td align="Left">Madhur Ahuja</td><td align="Left">Wed</td><td align="Left">Delhi</td><td align="Left">Pitampura</td><td align="Left">17:00</td><td align="Center"><a href="MyCabMates.aspx?RN=1117&amp;Order=Drop&amp;ShiftTime=17:00&amp;UploadID=4335" target="_blank"><b><font color="Red">Show</font></b></a></td>
+	</tr>
+</table>
+			
+		</form>
+		<script language="javascript">
+			function ResetScreen()
+			{
+				document.getElementById('txtEmpId').value = '';
+				document.getElementById('txtPeopleSoft_Id').value = '';
+				document.getElementById('MainTab').style.visibility='hidden';
+				document.getElementById('MainTab2ndOrder').style.visibility='hidden';
+				return false;
+			}
+		document.getElementById('txtEmpId').focus();	
+		</script>
+	</body>
+</HTML>
+ 
