@@ -8,6 +8,26 @@ $.ajaxSetup(
 );
 
 
+
 var client=new atrmsClient('6247543');
 
-var val=client.getRosterData();
+client.getRosterData(completeFunc, failureFunc);
+
+function completeFunc(pickupData, dropData)
+{
+	
+	console.log(pickupData);
+	
+	var template = $('#mustache-template').html();
+    $('#moustacheHtml').append(Mustache.render(template, {
+        rows: pickupData
+    }));
+
+
+}
+
+function failureFunc()
+{
+
+
+}

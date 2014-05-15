@@ -4,10 +4,36 @@
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/atrms.api.js" ></script>
 	<script type="text/javascript" src="js/core.js" ></script>
+	<script type="text/javascript" src="js/mustache.js" ></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
 </body>
+
+<div id="target">Loading...</div>
+
+<script id="mustache-template" type="x-tmpl-mustache">
+
+  <table>
+        {{#rows}}
+        <tr class="">
+            	{{#pickup}}
+            	<td>{{ StartDate}}</td>
+            	<td>{{ RouteNo }}</td>
+            	<td>{{ Shift }}</td>
+            	<td>{{ PickupTime }}</td>
+            	<td>{{ &CabMatesUrl }}</td>
+				{{/pickup}}
+        </tr>
+        {{/rows}}
+    </table>
+
+</script>
+
+<div id="moustacheHtml">
+
+</div>
+
 
 </html>

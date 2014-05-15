@@ -6,7 +6,7 @@ function atrmsClient(EmployeeId)
 
 	var PickProps = 
 	{
-	   'StartDate': 'Week Start Date',
+	   'StartDate': 'Date',
 	   'RouteNo': 'Route No',
 	   'Seq':'Seq',
 	   'Order':'Order',
@@ -16,13 +16,15 @@ function atrmsClient(EmployeeId)
 	   'Zone':'Zone',
 	   'Area':'Area',
 	   'Shift':'Shift',
-	   'PickupTime':'Pickup time',
-	   'CabMatesUrl':'Roster Details'
+	   'PickupTime':'Pickup',
+	   'CabMatesUrl':'Details'
 	};
+
+	this.PickDrops=PickProps;
 
 	var DropProps = 
 	{
-	   'StartDate': 'Week Start Date',
+	   'StartDate': 'Date',
 	   'Slot': 'Parking Slot',
 	   'RouteNo': 'Route No',
 	   'Seq':'Seq',
@@ -33,12 +35,15 @@ function atrmsClient(EmployeeId)
 	   'Zone':'Zone',
 	   'Area':'Area',
 	   'Shift':'Shift',
-	   'CabMatesUrl':'Roster Details'
+	   'CabMatesUrl':'Details'
 	   
 	};
 
+	this.DropProps=DropProps;
+
 	var siteUrl="http://wncrpma011.japa.ad.aexp.com/TransportRoster/EmployeeReport.aspx";
-	
+	var clientSuccessCallback;
+	var clientFailureCallback;
 
 	var getViewState=function()
 	{
@@ -87,14 +92,24 @@ function atrmsClient(EmployeeId)
 
 	var parseRosterData=function(data)
 	{
-		
+		var totaldata=[];
+
 		var pickUpDatarows=$(data).find("#MainTab tr");
 		var pickupArray=[];
+		var pickupObj;
+
+		pickupObj=new Object();
+		for(var property in PickProps)
+		{
+			pickupObj[property]=PickProps[property];
+		}
+		pickupArray.push({"pickup":pickupObj});
+
 		pickUpDatarows.each(function()
 		{
 			if(this.className=="tbldata" || this.className=="tbldata1")
 			{
-				var pickupObj=new Object();
+				pickupObj=new Object();
 				var columnList=$('td', this);
 
 				var i=0;
@@ -105,15 +120,17 @@ function atrmsClient(EmployeeId)
 
 
 				}
+			//	var detailsArray=$("td > a", this);
+			//	pickupObj[PickProps.CabMatesUrl]=detailsArray[0].href.substring(detailsArray[0].href.indexOf("/M"));
 				
-				pickupObj[PickProps.CabMatesUrl]=$("td > a", this).innerHTML;
-				pickupArray.push(pickupObj);
+				
+				pickupArray.push({"pickup":pickupObj});
 
 			}			
 		});
 
 
-		console.log(pickupArray);
+		//console.log(pickupArray);
 
 		var dropDataRows=$(data).find("#MainTab2ndOrder tr");
 		var dropArray=[];
@@ -130,13 +147,18 @@ function atrmsClient(EmployeeId)
 					dropObj[property]=columnList[i].innerHTML;
 					i=i+1;
 				}
+
+			//	var detailsArray=$("td > a", this);
+			//	dropObj[DropProps.CabMatesUrl]=detailsArray[0].href.substring(detailsArray[0].href.indexOf("/M"));
 				
-				dropArray.push(dropObj);
+				dropArray.push({"drop": dropObj});
 
 			}			
 		});
 
-		console.log(dropArray);
+		
+
+		clientSuccessCallback(pickupArray, dropArray);
 
 	};
 
@@ -145,7 +167,7 @@ function atrmsClient(EmployeeId)
 
 		var rawResponse=data;
 		var viewState=$(rawResponse).find('input[name=__VIEWSTATE]')[0].value;
-	    console.log(viewState);
+	   
 
 	    SendPostRequest(viewState);
 
@@ -153,7 +175,8 @@ function atrmsClient(EmployeeId)
 
 	var errorFunc=function()
 	{
-
+		
+		failureFunc();
 
 	};
 
@@ -164,11 +187,13 @@ function atrmsClient(EmployeeId)
 
 	};
 
-	this.getRosterData=function()
+	this.getRosterData=function(completeFunc, failureFunc)
 	{
-		var viewStateVal=getViewState();
-		console.log("calling");
-		return "";
+		clientSuccessCallback=completeFunc;
+		clientFailureCallback=failureFunc;
+
+		getViewState();
+		
 	};
 
 

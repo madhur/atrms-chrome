@@ -1,0 +1,14 @@
+Pickup Fields
+1)Date
+2)Route
+3)Shift
+4)PickupTime
+5)Link
+
+
+Drop fields
+1)Date
+2)Parking Slot
+3)Route
+4)Shift
+5)Link
