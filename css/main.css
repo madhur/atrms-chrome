@@ -164,8 +164,20 @@ text-shadow: 0 1px 0 rgba(255,255,255,0.75);
 {
     cursor: pointer;
     margin-bottom: 5px;
+    
+}
+.panel-heading
+{
+    padding-top:1px;
+    padding-bottom:1px;
 }
 
+.panel-body
+{
+    padding-top:2px;
+    padding-bottom: 2px;
+    
+}
 
 .taskItem-body {
 -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4),0 0 0 1px rgba(0,0,0,0.08);

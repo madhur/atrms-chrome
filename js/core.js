@@ -81,7 +81,7 @@ function fixurl()
                   $(this).hide();
               });
 
-              $(this).children(".expand-panel").show();
+              $(this).children(".expand-panel").slideDown("fast");;
           });
 
        });
@@ -97,12 +97,15 @@ function completeFunc(pickupData, dropData)
 	
 	var pickuptemplate = $('#pickup-template').html();
 	var droptemplate = $('#drop-template').html();
+
+   $('#accordion').append(Mustache.render(droptemplate, {
+        rows: dropData
+    }));
+   
     $('#accordion').append(Mustache.render(pickuptemplate, {
         rows: pickupData
     }));
-     $('#accordion').append(Mustache.render(droptemplate, {
-        rows: dropData
-    }));
+    
 
     $("#loading").hide();
     $("#login-panel").hide();
