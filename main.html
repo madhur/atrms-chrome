@@ -34,54 +34,80 @@
 </div>
 
 
-<div id="app-panel">
+<div id="app-panel" style="display:none">
 
     <div id="accordion">
 
     </div>
 
     <div id="footer">
-    Developed for Amex by <a target="_blank" href="mailto:madhur.ahuja@aexp.com">Madhur (Technical Capability Delivery team)</a>
+
+            <div id="atrms-site"><a target="_blank" href="http://wncrpma011.japa.ad.aexp.com/TransportRoster/EmployeeReport.aspx">Employee Roster</a></div>
+
+              
+
+            <div id="logout"><a href="#">Logout</a></div>
     </div>
+
+      <div id="intro">
+            Developed for Amex by <a target="_blank" href="mailto:madhur.ahuja@aexp.com">Madhur</a>
+            </div>
+
 </div>
 
 <script id="drop-template" type="x-tmpl-mustache">
    <h3>Drop</h3>
-        <div>
-          <table>
-                {{#rows}}
-                <tr class="">
-                        {{#drop}}
-                        <td>{{ StartDate}}</td>
-                        <td>{{ RouteNo }}</td>
-                        <td>{{ Shift }}</td>
-                        <td>{{ Slot }}</td>
-                        <td><a href="{{ CabMatesUrl }}" target="_blank">Details</a></td>
-                        {{/drop}}
-                </tr>
-                {{/rows}}
-            </table>
+
+   <div>
+     {{#rows}}
+        <div id="drop-row" class="panel panel-info">
+            {{#drop}}
+            <div class="fixed-panel panel-heading">
+                <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
+                 <div id="slot">{{ Slot }} </div>
+            </div>
+            <div class="expand-panel panel-body" style="display:none">
+                <div class="routeno"> {{ RouteNo }} </div>
+                <div class="shift">{{ Shift }} </div>
+               
+
+            </div>
+            {{/drop}}
         </div>
+    {{/rows}}
+</div>
+
+
+      
+      
 
 </script>
 
 <script id="pickup-template" type="x-tmpl-mustache">
         <h3>Pickup</h3>
-        <div>
-          <table>
-                {{#rows}}
-                <tr class="">
-                        {{#pickup}}
-                        <td>{{ StartDate}}</td>
-                        <td>{{ RouteNo }}</td>
-                        <td>{{ Shift }}</td>
-                        <td>{{ PickupTime }}</td>
-                        <td><a href="{{ CabMatesUrl }}" target="_blank">Details</a></td>
-                        {{/pickup}}
-                </tr>
-                {{/rows}}
-            </table>
+
+
+   <div>
+     {{#rows}}
+        <div id="drop-row" class="panel panel-info">
+            {{#pickup}}
+            <div class="fixed-panel panel-heading">
+                <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
+                <div id="pickuptime">{{ PickupTime }} </div>
+            </div>
+            <div class="expand-panel panel-body" style="display:none">
+                
+                
+                <div class="routeno"> {{ RouteNo }} </div>
+                <div class="shift">{{ Shift }} </div>
+            </div>
+            {{/pickup}}
         </div>
+{{/rows}}
+</div>
+
+        
+
 
 </script>
 

@@ -99,12 +99,12 @@ function atrmsClient(EmployeeId)
 		var pickupArray=[];
 		var pickupObj;
 
-		pickupObj=new Object();
+		/*pickupObj=new Object();
 		for(var property in PickProps)
 		{
 			pickupObj[property]=PickProps[property];
-		}
-		pickupArray.push({"pickup":pickupObj});
+		}*/
+		//pickupArray.push({"pickup":pickupObj});
 
 		pickUpDatarows.each(function()
 		{
@@ -125,8 +125,6 @@ function atrmsClient(EmployeeId)
 
 
 				}
-				var maskedUrl=pickupObj['CabMatesUrl'];
-				pickupObj['CabMatesUrl']=maskedUrl.substring(maskedUrl.indexOf("/M"));
 			
 				var detailsUrl=$("td > a", this);
 				pickupObj['CabMatesUrl']=hostName+detailsUrl[0].href.substring(detailsUrl[0].href.indexOf("/M"));

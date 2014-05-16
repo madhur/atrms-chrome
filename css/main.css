@@ -110,11 +110,74 @@ border-top-right-radius: 0px	!important;
 
 
 
-#footer {
+#footer, #intro {
 font-size: 11px;
-text-align: center;
-padding: 0 35px 0 35px;
+
+padding: 0 20px 0 20px;
 margin-top: 11px;
 color: #a3a3a2;
 text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+}
+#atrms-site
+{
+    float:left;
+    text-align: left;
+}
+#intro
+{
+    text-align: center;
+    padding-bottom: 10px;
+
+}
+
+#logout
+{
+    text-align: right;
+   
+}
+
+.startdate
+{
+    float:left;
+    text-align: left;
+}
+
+#slot{
+    text-align: right;
+}
+#pickuptime{
+    text-align: right;
+}
+
+.routeno
+{
+    text-align: right;
+    float:left;
+}
+
+.shift
+{
+    text-align: right;
+}
+
+.panel
+{
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+
+.taskItem-body {
+-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4),0 0 0 1px rgba(0,0,0,0.08);
+box-shadow: 0 1px 3px rgba(0,0,0,0.4),0 0 0 1px rgba(0,0,0,0.08);
+background: #eaeaea url("/images/task.png") repeat-x;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+
+
+height: 34px;
+margin: 1px 1px 0 1px;
 }

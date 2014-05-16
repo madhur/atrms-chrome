@@ -11,6 +11,8 @@ $.ajaxSetup(
   $(document).ready(function () 
   {
 
+   
+
         var empId = localStorage.getItem('empid');
     console.log(empId);
     if(empId!="" && empId!=null)
@@ -46,15 +48,46 @@ $.ajaxSetup(
       
     });
 
+       $("#logout").click(function() 
+      {
+          localStorage.removeItem("empid");
+          $("#app-panel").hide();
+          $("#login-panel").show();
+        
+      });
 
-          
-
+     
 
   });
 
 
 
+function fixurl()
+{
 
+   $("a").each(function()
+      {
+        $(this).attr("target","_blank");
+      });
+
+     $(".panel").each(function()
+       {
+
+          $(this).click(function()
+          {
+
+              $(".expand-panel").each(function()
+              {
+                  $(this).hide();
+              });
+
+              $(this).children(".expand-panel").show();
+          });
+
+       });
+   
+
+}
 
 
 function completeFunc(pickupData, dropData)
@@ -73,9 +106,11 @@ function completeFunc(pickupData, dropData)
 
     $("#loading").hide();
     $("#login-panel").hide();
-
+    $("#app-panel").show();
     $(function() {
     $( "#accordion" ).accordion();
+
+    fixurl();
   });
 
 
