@@ -42,6 +42,7 @@ function atrmsClient(EmployeeId)
 	this.DropProps=DropProps;
 
 	var siteUrl="http://wncrpma011.japa.ad.aexp.com/TransportRoster/EmployeeReport.aspx";
+	var hostName="http://wncrpma011.japa.ad.aexp.com/TransportRoster";
 	var clientSuccessCallback;
 	var clientFailureCallback;
 
@@ -115,13 +116,20 @@ function atrmsClient(EmployeeId)
 				var i=0;
 				for(var property in PickProps)
 				{
-					pickupObj[property]=columnList[i].innerHTML;
+					if(i<=columnList.length)
+					{
+						pickupObj[property]=columnList[i].innerHTML;
+					}
+
 					i=i+1;
 
 
 				}
-			//	var detailsArray=$("td > a", this);
-			//	pickupObj[PickProps.CabMatesUrl]=detailsArray[0].href.substring(detailsArray[0].href.indexOf("/M"));
+				var maskedUrl=pickupObj['CabMatesUrl'];
+				pickupObj['CabMatesUrl']=maskedUrl.substring(maskedUrl.indexOf("/M"));
+			
+				var detailsUrl=$("td > a", this);
+				pickupObj['CabMatesUrl']=hostName+detailsUrl[0].href.substring(detailsUrl[0].href.indexOf("/M"));
 				
 				
 				pickupArray.push({"pickup":pickupObj});
@@ -144,12 +152,15 @@ function atrmsClient(EmployeeId)
 				var i=0;
 				for(var property in DropProps)
 				{
-					dropObj[property]=columnList[i].innerHTML;
+					if(i<=columnList.length)
+					{
+						dropObj[property]=columnList[i].innerHTML;
+					}
 					i=i+1;
 				}
 
-			//	var detailsArray=$("td > a", this);
-			//	dropObj[DropProps.CabMatesUrl]=detailsArray[0].href.substring(detailsArray[0].href.indexOf("/M"));
+				var detailsUrl=$("td > a", this);
+				dropObj['CabMatesUrl']=hostName + detailsUrl[0].href.substring(detailsUrl[0].href.indexOf("/M"));
 				
 				dropArray.push({"drop": dropObj});
 

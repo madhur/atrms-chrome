@@ -18,9 +18,9 @@
 
 <div id="loading"><img src="/images/loading.gif" style="display:none" /></div>
 
-<h3>My Roster</h3>
+<h2>My Roster</h2>
 
-<div id="login-panel">
+<div id="login-panel" style="display:none">
 
     <div class="input-container">
 
@@ -34,14 +34,16 @@
 </div>
 
 
+<div id="app-panel">
 
+    <div id="accordion">
 
-<div id="accordion">
+    </div>
 
+    <div id="footer">
+    Developed for Amex by <a target="_blank" href="mailto:madhur.ahuja@aexp.com">Madhur (Technical Capability Delivery team)</a>
+    </div>
 </div>
-
-
-
 
 <script id="drop-template" type="x-tmpl-mustache">
    <h3>Drop</h3>
@@ -54,7 +56,7 @@
                         <td>{{ RouteNo }}</td>
                         <td>{{ Shift }}</td>
                         <td>{{ Slot }}</td>
-                        <td>{{ &CabMatesUrl }}</td>
+                        <td><a href="{{ CabMatesUrl }}" target="_blank">Details</a></td>
                         {{/drop}}
                 </tr>
                 {{/rows}}
@@ -74,7 +76,7 @@
                         <td>{{ RouteNo }}</td>
                         <td>{{ Shift }}</td>
                         <td>{{ PickupTime }}</td>
-                        <td>{{ &CabMatesUrl }}</td>
+                        <td><a href="{{ CabMatesUrl }}" target="_blank">Details</a></td>
                         {{/pickup}}
                 </tr>
                 {{/rows}}

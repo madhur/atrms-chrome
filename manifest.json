@@ -1,16 +1,20 @@
 {
   // Required
   "manifest_version": 2,
-  "name": "Roster++",
+  "name": "My Roster",
   "version": "1.0",
   "author": "Madhur Ahuja",
  "permissions": [
     "http://wncrpma011.japa.ad.aexp.com/*",
     "storage"
   ],
+"homepage_url": "https://mysites.aexp.com/Person.aspx?accountname=ads%5Cmahuj4",
+  "icons": { "16": "icons-16.png",
+           "48": "icons-48.png",
+          "128": "icons-128.png" },
 
    "browser_action": {
-   
+   "default_icon": "icons-16.png",
     "default_popup": "main.html"
   }
 
