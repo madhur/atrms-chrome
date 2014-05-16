@@ -2,38 +2,87 @@
 <html>
 <head>
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/atrms.api.js" ></script>
 	<script type="text/javascript" src="js/core.js" ></script>
 	<script type="text/javascript" src="js/mustache.js" ></script>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.10.4.custom.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
-</body>
 
-<div id="target">Loading...</div>
 
-<script id="mustache-template" type="x-tmpl-mustache">
+<div id="loading"><img src="/images/loading.gif" style="display:none" /></div>
 
-  <table>
-        {{#rows}}
-        <tr class="">
-            	{{#pickup}}
-            	<td>{{ StartDate}}</td>
-            	<td>{{ RouteNo }}</td>
-            	<td>{{ Shift }}</td>
-            	<td>{{ PickupTime }}</td>
-            	<td>{{ &CabMatesUrl }}</td>
-				{{/pickup}}
-        </tr>
-        {{/rows}}
-    </table>
+<h3>My Roster</h3>
 
-</script>
+<div id="login-panel">
 
-<div id="moustacheHtml">
+    <div class="input-container">
+
+        <input id="empid" autofocus tabindex="1" placeholder="Enter your Employe ID" />
+
+    </div>
+
+    <button id="loginbutton" type="button" class="btn btn-primary">Sign in</button>
+
 
 </div>
 
 
+
+
+<div id="accordion">
+
+</div>
+
+
+
+
+<script id="drop-template" type="x-tmpl-mustache">
+   <h3>Drop</h3>
+        <div>
+          <table>
+                {{#rows}}
+                <tr class="">
+                        {{#drop}}
+                        <td>{{ StartDate}}</td>
+                        <td>{{ RouteNo }}</td>
+                        <td>{{ Shift }}</td>
+                        <td>{{ Slot }}</td>
+                        <td>{{ &CabMatesUrl }}</td>
+                        {{/drop}}
+                </tr>
+                {{/rows}}
+            </table>
+        </div>
+
+</script>
+
+<script id="pickup-template" type="x-tmpl-mustache">
+        <h3>Pickup</h3>
+        <div>
+          <table>
+                {{#rows}}
+                <tr class="">
+                        {{#pickup}}
+                        <td>{{ StartDate}}</td>
+                        <td>{{ RouteNo }}</td>
+                        <td>{{ Shift }}</td>
+                        <td>{{ PickupTime }}</td>
+                        <td>{{ &CabMatesUrl }}</td>
+                        {{/pickup}}
+                </tr>
+                {{/rows}}
+            </table>
+        </div>
+
+</script>
+
+
+</body>
 </html>
