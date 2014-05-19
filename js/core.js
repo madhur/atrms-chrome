@@ -3,124 +3,115 @@
 jQuery.support.cors = true;
 $.ajaxSetup(
 {
-	cache : false
-}
-);
+    cache: false
+});
 
+$(document).ready(function()
+{
 
-  $(document).ready(function () 
-  {
-
-   
-
-        var empId = localStorage.getItem('empid');
+    var empId = localStorage.getItem('empid');
     console.log(empId);
-    if(empId!="" && empId!=null)
+    if (empId != "" && empId != null)
     {
-      console.log(empId);
-       $("#loading").show();
-              var client=new atrmsClient(empId);
-              client.getRosterData(completeFunc, failureFunc);
+        console.log(empId);
+        $("#loading").show();
+        var client = new atrmsClient(empId);
+        client.getRosterData(completeFunc, failureFunc);
     }
     else
-      $("#login-panel").show();
+        $("#login-panel").show();
 
-    $("#loginbutton").click(function() 
+    $("#loginbutton").click(function()
     {
-      var empId=$("#empid").val();
-      if(empId!="")
-      {
+        var empId = $("#empid").val();
+        if (empId != "")
+        {
 
-          localStorage.setItem("empid" ,empId);
+            localStorage.setItem("empid", empId);
 
-              // Notify that we saved.
-              console.log('Settings saved');
+            // Notify that we saved.
+            console.log('Settings saved');
 
-              $("#loading").show();
-              var client=new atrmsClient(empId);
-              client.getRosterData(completeFunc, failureFunc);
+            $("#loading").show();
+            var client = new atrmsClient(empId);
+            client.getRosterData(completeFunc, failureFunc);
 
-          
 
-      }
-      else
-       console.log('madhur');
-      
+
+        }
+        else
+            console.log('madhur');
+
     });
 
-       $("#logout").click(function() 
-      {
-          localStorage.removeItem("empid");
-          $("#app-panel").hide();
-          $("#login-panel").show();
-        
-      });
+    $("#logout").click(function()
+    {
+        localStorage.removeItem("empid");
+        $("#app-panel").hide();
+        $("#login-panel").show();
 
-     
-
-  });
+    });
 
 
+
+});
 
 function fixurl()
 {
+    $(".panel").each(function()
+    {
 
-   $("a").each(function()
-      {
-        $(this).attr("target","_blank");
-      });
+        $(this).click(function()
+        {
 
-     $(".panel").each(function()
-       {
+            $(".expand-panel").each(function()
+            {
+                $(this).hide();
+            });
 
-          $(this).click(function()
-          {
+            $(this).children(".expand-panel").slideDown("fast");;
+        });
 
-              $(".expand-panel").each(function()
-              {
-                  $(this).hide();
-              });
+    });
 
-              $(this).children(".expand-panel").slideDown("fast");;
-          });
-
-       });
-   
 
 }
 
 
 function completeFunc(pickupData, dropData)
 {
-	
-	console.log(pickupData);
-	
-	var pickuptemplate = $('#pickup-template').html();
-	var droptemplate = $('#drop-template').html();
 
-   $('#accordion').append(Mustache.render(droptemplate, {
+    console.log(pickupData);
+
+    var pickuptemplate = $('#pickup-template').html();
+    var droptemplate = $('#drop-template').html();
+
+    $('#accordion').append(Mustache.render(droptemplate,
+    {
         rows: dropData
     }));
-   
-    $('#accordion').append(Mustache.render(pickuptemplate, {
+
+    $('#accordion').append(Mustache.render(pickuptemplate,
+    {
         rows: pickupData
     }));
-    
+
 
     $("#loading").hide();
     $("#login-panel").hide();
     $("#app-panel").show();
-    $(function() {
-    $( "#accordion" ).accordion();
+    $(function()
+    {
+        $("#accordion").accordion();
 
-    fixurl();
-  });
+        fixurl();
+    });
 
 
 }
 
 function failureFunc()
 {
-	$("#loading").hide();
+    $("#loading").hide();
 
 }

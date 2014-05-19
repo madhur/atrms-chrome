@@ -3,11 +3,11 @@
 <head>
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/atrms.api.js" ></script>
-	<script type="text/javascript" src="js/core.js" ></script>
-	<script type="text/javascript" src="js/mustache.js" ></script>
-	<link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.10.4.custom.min.css">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/atrms.api.js" ></script>
+    <script type="text/javascript" src="js/core.js" ></script>
+    <script type="text/javascript" src="js/mustache.js" ></script>
+    <link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.10.4.custom.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -16,139 +16,139 @@
 <body>
 
 
-<div id="loading"><img src="/images/loading.gif" style="display:none" /></div>
+    <div id="loading"><img src="/images/loading.gif" style="display:none" /></div>
 
-<h2>My Roster</h2>
+    <h2>My Roster</h2>
 
-<div id="login-panel" style="display:none">
+    <div id="login-panel" style="display:none">
 
-    <div class="input-container">
+        <div class="input-container">
 
-        <input id="empid" autofocus tabindex="1" placeholder="Enter your Employe ID" />
+            <input id="empid" autofocus tabindex="1" placeholder="Enter your Employe ID" />
+
+        </div>
+
+        <button id="loginbutton" type="button" class="btn btn-primary">Sign in</button>
+
 
     </div>
 
-    <button id="loginbutton" type="button" class="btn btn-primary">Sign in</button>
 
+    <div id="app-panel" style="display:none">
 
-</div>
+        <div id="accordion">
 
+        </div>
 
-<div id="app-panel" style="display:none">
-
-    <div id="accordion">
-
-    </div>
-
-    <div id="footer">
+        <div id="footer">
 
             <div id="atrms-site"><a target="_blank" href="http://wncrpma011.japa.ad.aexp.com/TransportRoster/EmployeeReport.aspx">Employee Roster</a></div>
 
-              
+            
 
             <div id="logout"><a href="#">Logout</a></div>
+        </div>
+
+        <div id="intro">
+            Developed for Amex by <a target="_blank" href="mailto:madhur.ahuja@aexp.com">Madhur</a>
+        </div>
+
     </div>
 
-      <div id="intro">
-            Developed for Amex by <a target="_blank" href="mailto:madhur.ahuja@aexp.com">Madhur</a>
-            </div>
+    <script id="drop-template" type="x-tmpl-mustache">
+    <h3>Drop</h3>
 
-</div>
+    <div>
 
-<script id="drop-template" type="x-tmpl-mustache">
-   <h3>Drop</h3>
-
-   <div>
-
-              <div id="drop-row" class="panel panel-primary">
-            
-            <div class="panel-heading">
-                <div class="startdate">Date</div>
-                <div id="pickuptime">Slot</div>
-            </div>
-            <div class="panel-body" >
-                
-                
-                <div class="routeno">Route No</div>
-                <div class="shift">Shift</div>
-            </div>
-            
-        </div>
+    <div id="drop-row" class="panel panel-primary">
+    
+    <div class="panel-heading">
+    <div class="startdate">Date</div>
+    <div id="pickuptime">Slot</div>
+    </div>
+    <div class="panel-body" >
+    
+    
+    <div class="routeno">Route No</div>
+    <div class="shift">Shift</div>
+    </div>
+    
+    </div>
 
 
 
 
 
-     {{#rows}}
-        <div id="drop-row" class="panel panel-info">
-            {{#drop}}
-            <div class="fixed-panel panel-heading">
-                <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
-                 <div id="slot">{{ Slot }} </div>
-            </div>
-            <div class="expand-panel panel-body" style="display:none">
-                <div class="routeno"> {{ RouteNo }} </div>
-                <div class="shift">{{ Shift }} </div>
-               
+    {{#rows}}
+    <div id="drop-row" class="panel panel-info">
+    {{#drop}}
+    <div class="fixed-panel panel-heading">
+    <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
+    <div id="slot">{{ Slot }} </div>
+    </div>
+    <div class="expand-panel panel-body" style="display:none">
+    <div class="routeno"> {{ RouteNo }} </div>
+    <div class="shift">{{ Shift }} </div>
+    
 
-            </div>
-            {{/drop}}
-        </div>
+    </div>
+    {{/drop}}
+    </div>
     {{/rows}}
-</div>
+    </div>
 
 
-      
-      
+    
+    
 
-</script>
+    </script>
 
-<script id="pickup-template" type="x-tmpl-mustache">
-        <h3>Pickup</h3>
-
-
-   <div>
-
-        <div id="drop-row" class="panel panel-primary">
-            
-            <div class="panel-heading">
-                <div class="startdate">Date</div>
-                <div id="pickuptime">Pickup Time</div>
-            </div>
-            <div class="panel-body" >
-                
-                
-                <div class="routeno">Route No</div>
-                <div class="shift">Shift</div>
-            </div>
-            
-        </div>
+    <script id="pickup-template" type="x-tmpl-mustache">
+    <h3>Pickup</h3>
 
 
+    <div>
+
+    <div id="drop-row" class="panel panel-primary">
+    
+    <div class="panel-heading">
+    <div class="startdate">Date</div>
+    <div id="pickuptime">Pickup Time</div>
+    </div>
+    <div class="panel-body" >
+    
+    
+    <div class="routeno">Route No</div>
+    <div class="shift">Shift</div>
+    </div>
+    
+    </div>
 
 
-     {{#rows}}
-        <div id="drop-row" class="panel panel-info">
-            {{#pickup}}
-            <div class="fixed-panel panel-heading">
-                <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
-                <div id="pickuptime">{{ PickupTime }} </div>
-            </div>
-            <div class="expand-panel panel-body" style="display:none">
-                
-                
-                <div class="routeno"> {{ RouteNo }} </div>
-                <div class="shift">{{ Shift }} </div>
-            </div>
-            {{/pickup}}
-        </div>
-{{/rows}}
-</div>
-
-        
 
 
-</script>
+    {{#rows}}
+    <div id="drop-row" class="panel panel-info">
+    {{#pickup}}
+    <div class="fixed-panel panel-heading">
+    <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
+    <div id="pickuptime">{{ PickupTime }} </div>
+    </div>
+    <div class="expand-panel panel-body" style="display:none">
+    
+    
+    <div class="routeno"> {{ RouteNo }} </div>
+    <div class="shift">{{ Shift }} </div>
+    </div>
+    {{/pickup}}
+    </div>
+    {{/rows}}
+    </div>
+
+    
+
+
+    </script>
 
 
 </body>
