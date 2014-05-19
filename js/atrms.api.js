@@ -99,13 +99,6 @@ function atrmsClient(EmployeeId)
 		var pickupArray=[];
 		var pickupObj;
 
-		/*pickupObj=new Object();
-		for(var property in PickProps)
-		{
-			pickupObj[property]=PickProps[property];
-		}*/
-		//pickupArray.push({"pickup":pickupObj});
-
 		pickUpDatarows.each(function()
 		{
 			if(this.className=="tbldata" || this.className=="tbldata1")
@@ -122,21 +115,15 @@ function atrmsClient(EmployeeId)
 					}
 
 					i=i+1;
-
-
 				}
 			
 				var detailsUrl=$("td > a", this);
 				pickupObj['CabMatesUrl']=hostName+detailsUrl[0].href.substring(detailsUrl[0].href.indexOf("/M"));
 				
-				
 				pickupArray.push({"pickup":pickupObj});
 
 			}			
 		});
-
-
-		//console.log(pickupArray);
 
 		var dropDataRows=$(data).find("#MainTab2ndOrder tr");
 		var dropArray=[];
@@ -176,8 +163,6 @@ function atrmsClient(EmployeeId)
 
 		var rawResponse=data;
 		var viewState=$(rawResponse).find('input[name=__VIEWSTATE]')[0].value;
-	   
-
 	    SendPostRequest(viewState);
 
 	};
@@ -192,7 +177,7 @@ function atrmsClient(EmployeeId)
 
 	var alwaysFunc=function()
 	{
-
+		// do nothing as of now
 
 	};
 

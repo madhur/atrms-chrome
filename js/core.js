@@ -10,45 +10,35 @@ $(document).ready(function()
 {
 
     var empId = localStorage.getItem('empid');
-    console.log(empId);
     if (empId != "" && empId != null)
     {
-        console.log(empId);
-        $("#loading").show();
-        var client = new atrmsClient(empId);
-        client.getRosterData(completeFunc, failureFunc);
+        login(empId);
     }
     else
-        $("#login-panel").show();
+    {
+        logout();
+    }
 
     $("#loginbutton").click(function()
     {
         var empId = $("#empid").val();
         if (empId != "")
         {
-
             localStorage.setItem("empid", empId);
-
-            // Notify that we saved.
-            console.log('Settings saved');
-
-            $("#loading").show();
-            var client = new atrmsClient(empId);
-            client.getRosterData(completeFunc, failureFunc);
-
-
-
+            login(empId);
         }
         else
-            console.log('madhur');
+        {
+            $("#error").html("Please enter your employee ID");
+
+        }
 
     });
 
     $("#logout").click(function()
     {
         localStorage.removeItem("empid");
-        $("#app-panel").hide();
-        $("#login-panel").show();
+        logout();
 
     });
 
@@ -56,9 +46,23 @@ $(document).ready(function()
 
 });
 
+function logout()
+{
+        $("#app-panel").hide();
+        $("#login-panel").show();
+}
+
+function login(empId)
+{
+    $("#error").empty();
+    $("#loading").show();
+    var client = new atrmsClient(empId);
+    client.getRosterData(completeFunc, failureFunc);
+}
+
 function fixurl()
 {
-    $(".panel").each(function()
+    $(".fixed-panel").each(function()
     {
 
         $(this).click(function()
@@ -69,7 +73,9 @@ function fixurl()
                 $(this).hide();
             });
 
-            $(this).children(".expand-panel").slideDown("fast");;
+            $(this).next(".expand-panel").slideDown("fast");
+
+
         });
 
     });
@@ -81,11 +87,13 @@ function fixurl()
 function completeFunc(pickupData, dropData)
 {
 
-    console.log(pickupData);
+    //console.log(pickupData);
 
     var pickuptemplate = $('#pickup-template').html();
     var droptemplate = $('#drop-template').html();
 
+    $('#accordion').replaceWith('<div id="accordion"></div>');
+    //$("#accordion").empty();
     $('#accordion').append(Mustache.render(droptemplate,
     {
         rows: dropData
@@ -100,12 +108,12 @@ function completeFunc(pickupData, dropData)
     $("#loading").hide();
     $("#login-panel").hide();
     $("#app-panel").show();
-    $(function()
-    {
-        $("#accordion").accordion();
 
-        fixurl();
-    });
+    $("#accordion").accordion();
+    //$(".ui-accordion-content").height("+=0");
+
+    fixurl();
+
 
 
 }

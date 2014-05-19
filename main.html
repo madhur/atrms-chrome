@@ -16,20 +16,22 @@
 <body>
 
 
-    <div id="loading"><img src="/images/loading.gif" style="display:none" /></div>
+    
 
     <h2>My Roster</h2>
+
+    <div id="loading" style="display:none"><img src="/images/loading.gif" /></div>
 
     <div id="login-panel" style="display:none">
 
         <div class="input-container">
 
-            <input id="empid" autofocus tabindex="1" placeholder="Enter your Employe ID" />
+            <input id="empid" autofocus tabindex="1" required placeholder="Enter your Employee ID" />
 
         </div>
 
         <button id="loginbutton" type="button" class="btn btn-primary">Sign in</button>
-
+        <div id="error"></div>
 
     </div>
 
@@ -44,7 +46,7 @@
 
             <div id="atrms-site"><a target="_blank" href="http://wncrpma011.japa.ad.aexp.com/TransportRoster/EmployeeReport.aspx">Employee Roster</a></div>
 
-            
+
 
             <div id="logout"><a href="#">Logout</a></div>
         </div>
@@ -61,18 +63,18 @@
     <div>
 
     <div id="drop-row" class="panel panel-primary">
-    
-    <div class="panel-heading">
+
+    <div class="panel-heading header-panel">
     <div class="startdate">Date</div>
     <div id="pickuptime">Slot</div>
     </div>
     <div class="panel-body" >
-    
-    
+
+
     <div class="routeno">Route No</div>
     <div class="shift">Shift</div>
     </div>
-    
+
     </div>
 
 
@@ -82,14 +84,14 @@
     {{#rows}}
     <div id="drop-row" class="panel panel-info">
     {{#drop}}
-    <div class="fixed-panel panel-heading">
-    <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
+    <div class="fixed-panel panel-heading ">
+    <div class="startdate"><a href="{{ CabMatesUrl }}" target="_blank">{{ StartDate }}</a></div>
     <div id="slot">{{ Slot }} </div>
     </div>
     <div class="expand-panel panel-body" style="display:none">
     <div class="routeno"> {{ RouteNo }} </div>
     <div class="shift">{{ Shift }} </div>
-    
+
 
     </div>
     {{/drop}}
@@ -98,8 +100,8 @@
     </div>
 
 
-    
-    
+
+
 
     </script>
 
@@ -110,18 +112,18 @@
     <div>
 
     <div id="drop-row" class="panel panel-primary">
-    
-    <div class="panel-heading">
+
+    <div class="panel-heading header-panel">
     <div class="startdate">Date</div>
     <div id="pickuptime">Pickup Time</div>
     </div>
     <div class="panel-body" >
-    
-    
+
+
     <div class="routeno">Route No</div>
     <div class="shift">Shift</div>
     </div>
-    
+
     </div>
 
 
@@ -131,21 +133,21 @@
     <div id="drop-row" class="panel panel-info">
     {{#pickup}}
     <div class="fixed-panel panel-heading">
-    <div class="startdate"><a href="{{ CabMatesUrl }}">{{ StartDate }}</a></div>
-    <div id="pickuptime">{{ PickupTime }} </div>
+        <div class="startdate"><a href="{{ CabMatesUrl }}" target="_blank">{{ StartDate }}</a></div>
+        <div id="pickuptime">{{ PickupTime }} </div>
     </div>
     <div class="expand-panel panel-body" style="display:none">
-    
-    
-    <div class="routeno"> {{ RouteNo }} </div>
-    <div class="shift">{{ Shift }} </div>
+
+
+        <div class="routeno"> {{ RouteNo }} </div>
+        <div class="shift">{{ Shift }} </div>
     </div>
     {{/pickup}}
     </div>
     {{/rows}}
     </div>
 
-    
+
 
 
     </script>
