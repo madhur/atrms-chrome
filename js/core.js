@@ -110,7 +110,7 @@ function completeFunc(pickupData, dropData)
     $("#app-panel").show();
 
     $("#accordion").accordion();
-    //$(".ui-accordion-content").height("+=0");
+    $(".ui-accordion-content").height("+=0");
 
     fixurl();
 
