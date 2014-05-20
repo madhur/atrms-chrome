@@ -24,7 +24,7 @@ $(document).ready(function()
         var empId = $("#empid").val();
         if (empId != "")
         {
-            localStorage.setItem("empid", empId);
+            
             login(empId);
         }
         else
@@ -84,10 +84,11 @@ function fixurl()
 }
 
 
-function completeFunc(pickupData, dropData)
+function completeFunc(pickupData, dropData, empId)
 {
 
     //console.log(pickupData);
+    localStorage.setItem("empid", empId);
 
     var pickuptemplate = $('#pickup-template').html();
     var droptemplate = $('#drop-template').html();
@@ -118,8 +119,10 @@ function completeFunc(pickupData, dropData)
 
 }
 
-function failureFunc()
+function failureFunc(data)
 {
     $("#loading").hide();
+    console.log(data);
+    $("#error").html(data);
 
 }

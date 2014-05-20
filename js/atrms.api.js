@@ -99,6 +99,14 @@ function atrmsClient(EmployeeId)
 		var pickupArray=[];
 		var pickupObj;
 
+		if($(data).find("#strMsg").length)
+		{
+
+			clientFailureCallback($(data).find("#strMsg").html());
+			return;
+		}
+
+
 		pickUpDatarows.each(function()
 		{
 			if(this.className=="tbldata" || this.className=="tbldata1")
@@ -154,7 +162,7 @@ function atrmsClient(EmployeeId)
 
 		
 
-		clientSuccessCallback(pickupArray, dropArray);
+		clientSuccessCallback(pickupArray, dropArray, EmployeeId);
 
 	};
 
