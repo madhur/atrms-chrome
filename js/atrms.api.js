@@ -43,8 +43,9 @@ function atrmsClient(EmployeeId)
 
 	var siteUrl="http://wncrpma011.japa.ad.aexp.com/TransportRoster/EmployeeReport.aspx";
 	var hostName="http://wncrpma011.japa.ad.aexp.com/TransportRoster";
-	var clientSuccessCallback;
+	var clientSuccessCallback, cabmatesSuccessFunc;
 	var clientFailureCallback;
+	var parentElement;
 
 	var getViewState=function()
 	{
@@ -188,6 +189,58 @@ function atrmsClient(EmployeeId)
 		// do nothing as of now
 
 	};
+
+	var ExtractCabMates=function(data)
+	{
+		var rows=$(data).find("#grdCabMates tr");
+		var cabmates=[];
+
+		rows.each(function()
+		{
+			
+				//cabmateList=new Object();
+				var columnList=$('td', this);
+
+			//	var i=0;
+			
+					//if(i<=columnList.length && i==3)
+					//{
+						cabmates.push(columnList[3].innerHTML);
+					//}
+
+					//i=i+1;
+				
+
+					
+		});
+
+		cabmatesSuccessFunc(cabmates, parentElement);
+
+	};
+
+	this.getCabMates=function(url, completeFunc, failureFunc, elem)
+	{
+		parentElement=elem;
+
+		cabmatesSuccessFunc=completeFunc;
+
+				$.ajax
+		({
+		    type: "GET",
+		    url: url,
+		    dataType: 'html',		    
+		    processData: false,
+			    xhrFields: 
+			    {
+			        withCredentials: true
+			    }
+	    })
+		.done(ExtractCabMates).fail(errorFunc).always(alwaysFunc);
+	   
+		return "";
+
+
+	}
 
 	this.getRosterData=function(completeFunc, failureFunc)
 	{

@@ -6,6 +6,18 @@ $.ajaxSetup(
     cache: false
 });
 
+  var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-51233548-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = 'https://ssl.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        
+
 $(document).ready(function()
 {
 
@@ -75,6 +87,11 @@ function fixurl()
 
             $(this).next(".expand-panel").slideDown("fast");
 
+            var cabUrl = $(this).find("a.cabmateurl");
+
+           // console.log(cabUrl);
+
+            new atrmsClient().getCabMates(cabUrl[0].href, completeCabFunc, failureFunc, this );
 
         });
 
@@ -83,18 +100,29 @@ function fixurl()
 
 }
 
+function completeCabFunc(data, parentElement)
+{
+
+    data.shift();
+    console.log(data);
+    //console.log(parentElement);
+
+    var cabDiv=$(parentElement).next().find(".cabmates");
+console.log(cabDiv);
+  //  $(cabDiv[0]).html(data.toString());
+
+
+}
 
 function completeFunc(pickupData, dropData, empId)
 {
 
-    //console.log(pickupData);
     localStorage.setItem("empid", empId);
 
     var pickuptemplate = $('#pickup-template').html();
     var droptemplate = $('#drop-template').html();
 
     $('#accordion').replaceWith('<div id="accordion"></div>');
-    //$("#accordion").empty();
     $('#accordion').append(Mustache.render(droptemplate,
     {
         rows: dropData
@@ -123,6 +151,9 @@ function failureFunc(data)
 {
     $("#loading").hide();
     console.log(data);
-    $("#error").html(data);
+    if(data!=null)
+        $("#error").html(data);
+    else
+        $("#error").html("Error");
 
 }
