@@ -129,7 +129,7 @@ function atrmsClient(EmployeeId)
 				var detailsUrl=$("td > a", this);
 				pickupObj['CabMatesUrl']=hostName+detailsUrl[0].href.substring(detailsUrl[0].href.indexOf("/M"));
 				
-				pickupArray.push({"pickup":pickupObj});
+				pickupArray.push({"rowitem":pickupObj});
 
 			}			
 		});
@@ -156,7 +156,7 @@ function atrmsClient(EmployeeId)
 				var detailsUrl=$("td > a", this);
 				dropObj['CabMatesUrl']=hostName + detailsUrl[0].href.substring(detailsUrl[0].href.indexOf("/M"));
 				
-				dropArray.push({"drop": dropObj});
+				dropArray.push({"rowitem": dropObj});
 
 			}			
 		});

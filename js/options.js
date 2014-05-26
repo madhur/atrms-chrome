@@ -19,5 +19,16 @@ $(document).ready(function()
 
 	});
 
+	if(localStorage.getItem("oldroster")===true)
+	{
+		$('#oldroster').prop('checked', true);
+
+	}
+	else
+	{
+		$('#oldroster').prop('checked', false);
+
+	}
+
 
 });

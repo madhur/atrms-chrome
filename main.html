@@ -7,6 +7,7 @@
     <script type="text/javascript" src="js/atrms.api.js" ></script>
     <script type="text/javascript" src="js/core.js" ></script>
     <script type="text/javascript" src="js/mustache.js" ></script>
+    <script type="text/javascript" src="js/moment.min.js" ></script>
     <link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.10.4.custom.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
@@ -81,7 +82,7 @@
 
     {{#rows}}
     <div id="drop-row" class="panel panel-info">
-    {{#drop}}
+    {{#rowitem}}
     <div class="fixed-panel panel-heading ">
     <div class="startdate"><a href="{{ CabMatesUrl }}" class="cabmateurl" target="_blank">{{ StartDate }}</a></div>
     <div id="slot">{{ Slot }} </div>
@@ -92,7 +93,7 @@
     <div class="cabmates"></div>
 
     </div>
-    {{/drop}}
+    {{/rowitem}}
     </div>
     {{/rows}}
     </div>
@@ -129,7 +130,7 @@
 
     {{#rows}}
     <div id="drop-row" class="panel panel-info">
-    {{#pickup}}
+    {{#rowitem}}
     <div class="fixed-panel panel-heading">
         <div class="startdate"><a href="{{ CabMatesUrl }}" class="cabmateurl" target="_blank">{{ StartDate }}</a></div>
         <div id="pickuptime">{{ PickupTime }} </div>
@@ -142,7 +143,7 @@
 
             <div class="cabmates"></div>
     </div>
-    {{/pickup}}
+    {{/rowitem}}
     </div>
     {{/rows}}
     </div>

@@ -34,7 +34,21 @@ module.exports = function(grunt)
                 src: 'build/css/main.css',
                 dest: 'build/css/main.css',
 
+            },
+
+             
+            css1:{
+                src: 'build/css/options-widgets.css',
+                dest: 'build/css/options-widgets.css',
+
+            },
+
+            css2: {
+                src: 'build/css/options.css',
+                dest: 'build/css/options.css',
+
             }
+
 
 
         },
@@ -51,7 +65,9 @@ module.exports = function(grunt)
                 files:
                 {
                     'build/js/core.js': ['build/js/core.js'],
-                    'build/js/atrms.api.js': ['build/js/atrms.api.js']
+                    'build/js/atrms.api.js': ['build/js/atrms.api.js'],
+                     'build/js/options.js': ['build/js/options.js'],
+                     'build/js/options-setup.js': ['build/js/options-setup.js']
 
                 }
             }

@@ -6,17 +6,21 @@ $.ajaxSetup(
     cache: false
 });
 
-  var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-51233548-1']);
-        _gaq.push(['_trackPageview']);
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-51233548-1']);
+_gaq.push(['_trackPageview']);
 
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = 'https://ssl.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
+(function()
+{
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = 'https://ssl.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
 
-        
+
 
 $(document).ready(function()
 {
@@ -36,7 +40,7 @@ $(document).ready(function()
         var empId = $("#empid").val();
         if (empId != "")
         {
-            
+
             login(empId);
         }
         else
@@ -49,7 +53,7 @@ $(document).ready(function()
 
     $("#logout").click(function()
     {
-       
+
         logout();
 
     });
@@ -60,9 +64,9 @@ $(document).ready(function()
 
 function logout()
 {
-        localStorage.removeItem("empid");  
-        $("#app-panel").hide();
-        $("#login-panel").show();
+    localStorage.removeItem("empid");
+    $("#app-panel").hide();
+    $("#login-panel").show();
 }
 
 function login(empId)
@@ -90,9 +94,9 @@ function fixurl()
 
             var cabUrl = $(this).find("a.cabmateurl");
 
-           // console.log(cabUrl);
+            // console.log(cabUrl);
 
-            new atrmsClient().getCabMates(cabUrl[0].href, completeCabFunc, failureFunc, this );
+            new atrmsClient().getCabMates(cabUrl[0].href, completeCabFunc, failureFunc, this);
 
         });
 
@@ -108,9 +112,9 @@ function completeCabFunc(data, parentElement)
     console.log(data);
     //console.log(parentElement);
 
-    var cabDiv=$(parentElement).next().find(".cabmates");
-console.log(cabDiv);
-  //  $(cabDiv[0]).html(data.toString());
+    var cabDiv = $(parentElement).next().find(".cabmates");
+    console.log(cabDiv);
+    //  $(cabDiv[0]).html(data.toString());
 
 
 }
@@ -125,9 +129,11 @@ function completeFunc(pickupData, dropData, empId)
 
     $('#accordion').replaceWith('<div id="accordion"></div>');
 
-    
-
-
+    if (localStorage.getItem("oldroster")===true)
+    {
+        filterDates(pickupData);
+        filterDates(dropData);
+    }
 
     $('#accordion').append(Mustache.render(droptemplate,
     {
@@ -153,11 +159,34 @@ function completeFunc(pickupData, dropData, empId)
 
 }
 
+function filterDates(Data)
+{
+
+    var i;
+
+
+    i = Data.length;
+    while (i--)
+    {
+
+        var rosterDate = moment(Data[i].rowitem["StartDate"], "DD/MM/YYYY");
+
+        if (moment().startOf('day') > rosterDate)
+        {
+
+            Data.splice(i, 1);
+        }
+    }
+
+
+
+}
+
 function failureFunc(data)
 {
     $("#loading").hide();
     console.log(data);
-    if(data!=null)
+    if (data != null)
         $("#error").html(data);
     else
         $("#error").html("Error");
