@@ -49,7 +49,7 @@ $(document).ready(function()
 
     $("#logout").click(function()
     {
-        localStorage.removeItem("empid");
+       
         logout();
 
     });
@@ -60,6 +60,7 @@ $(document).ready(function()
 
 function logout()
 {
+        localStorage.removeItem("empid");  
         $("#app-panel").hide();
         $("#login-panel").show();
 }
@@ -123,6 +124,11 @@ function completeFunc(pickupData, dropData, empId)
     var droptemplate = $('#drop-template').html();
 
     $('#accordion').replaceWith('<div id="accordion"></div>');
+
+    
+
+
+
     $('#accordion').append(Mustache.render(droptemplate,
     {
         rows: dropData
