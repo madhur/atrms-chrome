@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+	var storage=new Storage();
+
 
 	$("#readmore").click(function()
 	{
@@ -10,16 +12,21 @@ $(document).ready(function()
 	{
 		if ($(this).is(":checked"))
 		{
-			localStorage.setItem("oldroster", true);
+			console.log("setting");
+			storage.storeItem("oldroster", true);
 		}
 		else
 		{
-			localStorage.removeItem("oldroster");
+			console.log("removing");
+			storage.removeItem("oldroster");
 		}
 
 	});
 
-	if(localStorage.getItem("oldroster")===true)
+
+	console.log(storage.getItem("oldroster"));
+
+	if(storage.getItem("oldroster"))
 	{
 		$('#oldroster').prop('checked', true);
 

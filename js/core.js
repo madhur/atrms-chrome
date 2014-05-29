@@ -20,12 +20,12 @@ _gaq.push(['_trackPageview']);
     s.parentNode.insertBefore(ga, s);
 })();
 
-
+var storage=new Storage();
 
 $(document).ready(function()
 {
 
-    var empId = localStorage.getItem('empid');
+    var empId = storage.getItem('empid');
     if (empId != "" && empId != null)
     {
         login(empId);
@@ -64,7 +64,7 @@ $(document).ready(function()
 
 function logout()
 {
-    localStorage.removeItem("empid");
+    storage.removeItem("empid");
     $("#app-panel").hide();
     $("#login-panel").show();
 }
@@ -122,14 +122,14 @@ function completeCabFunc(data, parentElement)
 function completeFunc(pickupData, dropData, empId)
 {
 
-    localStorage.setItem("empid", empId);
+    storage.storeItem("empid", empId);
 
     var pickuptemplate = $('#pickup-template').html();
     var droptemplate = $('#drop-template').html();
 
     $('#accordion').replaceWith('<div id="accordion"></div>');
 
-    if (localStorage.getItem("oldroster")===true)
+    if (storage.getItem("oldroster"))
     {
         filterDates(pickupData);
         filterDates(dropData);
@@ -163,7 +163,7 @@ function filterDates(Data)
 {
 
     var i;
-
+    console.log("filtering");
 
     i = Data.length;
     while (i--)

@@ -1,6 +1,6 @@
 body {
     height:200px;
-    width:300px;
+    width:220px;
     background-color: #f3f3f3;
 }
 #login-panel {
@@ -26,7 +26,7 @@ h2 {
     color: #423e3e;
 }
 #accordion {
-    width: 300px;
+   
     margin: 20px auto;
     padding-left: 20px;
     padding-right: 20px;
@@ -38,6 +38,8 @@ h2 {
     font-size: 10pt;
     line-height: 16pt;
     border:none;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 #accordion .ui-accordion-content a {
     color: #777;
@@ -93,8 +95,9 @@ h2 {
 #accordion .ui-widget-content {
     background-image: none;
 }
-#footer, #intro {
+#footer {
     font-size: 11px;
+    margin-bottom: 10px;
     padding: 0 20px 0 20px;
     margin-top: 11px;
     color: #a3a3a2;
